@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	const url = "https://www.ya.ru"
+	const url = "https://www.nix.ru"
 	data, err := spider.Scan(url, 1)
 	if err != nil {
 		log.Printf("ошибка при сканировании сайта %s: %v\n", url, err)
