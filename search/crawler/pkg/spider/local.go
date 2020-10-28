@@ -4,7 +4,6 @@ package spider
 
 // LocScan Заглушка для тестов.
 type LocScan struct {
-	Interface
 }
 
 // Scan возвращает ассоциативный массив: ссылок-описание

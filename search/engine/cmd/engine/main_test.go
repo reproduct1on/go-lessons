@@ -7,7 +7,7 @@ import (
 
 func Test_search(t *testing.T) {
 	s := new(spider.LocScan)
-	data, _ := s.Scan(1)
+	data, _ := scan(s)
 	got := search(data, "почта")
 	want := "https://www.mail.ru - Mail.ru: почта, поиск в интернете, новости, игры"
 	if got != want {

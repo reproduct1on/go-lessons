@@ -9,9 +9,9 @@ import (
 	"golang.org/x/net/html"
 )
 
-// Interface - хранилище данных.
-type Interface interface {
-	Scan(url string, depth int) (data map[string]string, err error)
+// Scanner - интерфейс реализующий сканер веб сайта
+type Scanner interface {
+	Scan(depth int) (data map[string]string, err error)
 }
 
 //WebScan - Структура для работы со Spider

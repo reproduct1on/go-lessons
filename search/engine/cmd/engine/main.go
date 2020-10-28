@@ -10,9 +10,9 @@ import (
 
 func main() {
 	ws := spider.NewWebScan([]string{"https://www.ya.ru", "https://www.mail.ru", "https://go.dev/"})
-	data, _ := ws.Scan(2)
-	if len(data) == 0 {
-		fmt.Println("Нет отсканируемых данных")
+	data, err := scan(ws)
+	if err != nil {
+		fmt.Println(err)
 		return
 	}
 	fmt.Println("Успешное сканирование")
@@ -43,4 +43,17 @@ func search(data map[string]string, str string) (result string) {
 	}
 	return result
 
+}
+
+func scan(s spider.Scanner) (data map[string]string, err error) {
+	data, err = s.Scan(2)
+	if err != nil {
+		return data, err
+	}
+	if len(data) == 0 {
+		err = fmt.Errorf("Нет отсканируемых данных")
+		return data, err
+	}
+
+	return data, nil
 }
