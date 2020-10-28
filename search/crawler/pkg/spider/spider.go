@@ -11,19 +11,16 @@ import (
 
 // Scanner - интерфейс реализующий сканер веб сайта
 type Scanner interface {
-	Scan(depth int) (data map[string]string, err error)
+	Scan(Urls []string, depth int) (data map[string]string, err error)
 }
 
 //WebScan - Структура для работы со Spider
 type WebScan struct {
-	Urls []string
 }
 
 // NewWebScan - Конструктор
-func NewWebScan(urls []string) *WebScan {
-	ws := WebScan{
-		Urls: urls,
-	}
+func NewWebScan() *WebScan {
+	ws := WebScan{}
 	return &ws
 }
 
@@ -32,9 +29,9 @@ func NewWebScan(urls []string) *WebScan {
 
 // Scan осуществляет рекурсивный обход ссылок сайта, указанного в URL,
 // с учётом глубины перехода по ссылкам, переданной в depth.
-func (w *WebScan) Scan(depth int) (data map[string]string, err error) {
+func (w *WebScan) Scan(Urls []string, depth int) (data map[string]string, err error) {
 	data = make(map[string]string)
-	for _, url := range w.Urls {
+	for _, url := range Urls {
 		parse(url, url, depth, data)
 	}
 	return data, nil

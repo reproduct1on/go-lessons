@@ -9,8 +9,9 @@ import (
 )
 
 func main() {
-	ws := spider.NewWebScan([]string{"https://www.ya.ru", "https://www.mail.ru", "https://go.dev/"})
-	data, err := scan(ws)
+	url := []string{"https://www.ya.ru", "https://www.mail.ru", "https://go.dev/"}
+	ws := spider.NewWebScan()
+	data, err := scan(ws, url)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -45,8 +46,8 @@ func search(data map[string]string, str string) (result string) {
 
 }
 
-func scan(s spider.Scanner) (data map[string]string, err error) {
-	data, err = s.Scan(2)
+func scan(s spider.Scanner, Urls []string) (data map[string]string, err error) {
+	data, err = s.Scan(Urls, 2)
 	if err != nil {
 		return data, err
 	}

@@ -7,7 +7,7 @@ type LocScan struct {
 }
 
 // Scan возвращает ассоциативный массив: ссылок-описание
-func (l *LocScan) Scan(depth int) (data map[string]string, err error) {
+func (l *LocScan) Scan(Urls []string, depth int) (data map[string]string, err error) {
 	data = map[string]string{
 		"https://www.mail.ru": "Mail.ru: почта, поиск в интернете, новости, игры",
 	}
